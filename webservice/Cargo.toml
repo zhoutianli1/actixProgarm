@@ -1,0 +1,30 @@
+[package]
+name = "webservice"
+version = "0.1.0"
+edition = "2021"
+default-run = "teacher-service"
+
+
+[dependencies]
+actix-cors = "0.6.1" #为了跨域，webservice运行在端口3000，web wasm-client是8080
+
+actix-web = "4"
+actix-rt = "2.6.0"
+serde = {version = "1.0.136", features = ["derive"]}
+chrono = {version = "0.4.19", features = ["serde"]}
+
+dotenv = "0.15.0"
+openssl = {version = "0.10.38", features = ["vendored"]}
+sqlx = {version = "0.6.2", features = [
+    "postgres",
+    "runtime-tokio-rustls",
+    "macros",
+    "chrono",
+]}
+
+[build-dependencies]
+syn = "1"
+
+
+[[bin]]
+name = "teacher-service"
